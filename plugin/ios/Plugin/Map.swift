@@ -36,16 +36,19 @@ class GMViewController: UIViewController {
         self.view = GMapView
     }
 
-    func initClusterManager(_ minClusterSize: Int?) {
-        let iconGenerator = GMUDefaultClusterIconGenerator()
-        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
-        let renderer = GMUDefaultClusterRenderer(mapView: self.GMapView, clusterIconGenerator: iconGenerator)
-        self.minimumClusterSize = minClusterSize
-        if let minClusterSize = minClusterSize {
-            renderer.minimumClusterSize = UInt(minClusterSize)
-        }
-        self.clusterManager = GMUClusterManager(map: self.GMapView, algorithm: algorithm, renderer: renderer)
+  func initClusterManager(_ minClusterSize: Int?) {
+    let iconGenerator = CustomClusterIconGenerator()
+    let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+    let renderer = GMUDefaultClusterRenderer(mapView: self.GMapView, clusterIconGenerator: iconGenerator)
+    
+    self.minimumClusterSize = minClusterSize
+    if let minClusterSize = minClusterSize {
+        renderer.minimumClusterSize = UInt(minClusterSize)
     }
+    
+    self.clusterManager = GMUClusterManager(map: self.GMapView, algorithm: algorithm, renderer: renderer)
+}
+
 
     func destroyClusterManager() {
         self.clusterManager = nil
