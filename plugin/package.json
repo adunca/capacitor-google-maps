@@ -50,7 +50,7 @@
     "publish:cocoapod": "pod trunk push ./CapacitorGoogleMaps.podspec --allow-warnings",
     "downleveldts": "pnpm downlevel-dts dist/typings dist/typings/ts_old --to=3.5",
     "pack-local": "pnpm run build && pnpm pack && find . -name 'capacitor-google-maps-*tgz' -exec bash -c 'mv $0 capacitor-google-maps.tgz' {} \\; ",
-    "prepare": "pnpm run build",
+    "prepare": "npm run build",
     "unittest:ios": "xcodebuild test -project ./unit-tests/ios/GoogleMapsPlugin/GoogleMapsPlugin.xcodeproj -scheme TestApp -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.2' | xcpretty && exit ${PIPESTATUS[0]}",
     "unittest:android": "cd ./unit-tests/android && ./gradlew testDebugUnitTest"
   },
